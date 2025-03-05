@@ -17,9 +17,7 @@ RUN apk add --no-cache --update --virtual build-deps alpine-sdk autoconf automak
 \
         apk del build-deps && rm -rf /var/cache/apk/
 
-
+RUN apk add openssh-client
 EXPOSE 4200
 
-USER shusr
-
-CMD ["/shellinaboxd", "--no-beep", "--disable-peer-check", "--disable-ssl", "--service=/:shusr:shusr:/:/bin/sh"]
+CMD ["/shellinaboxd", "--no-beep", "--disable-ssl", "--service=/:SSH"]
